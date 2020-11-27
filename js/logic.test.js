@@ -37,12 +37,12 @@ REPORT');
     it('test 3', () => {
       var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
 
-      let result = processInput(state, 'PLACE 1,2,EAST\n\
-MOVE\n\
-MOVE\n\
-LEFT\n\
-MOVE\n\
-REPORT');
+      let result = processInput(state, `PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT`);
 
       expect(result.length).to.equal(1);
       expect(result[0]).to.equal("3,3,NORTH");

@@ -12,9 +12,7 @@ function processInput(state, input) {
  * The entry function of the simulation. Initialises the simulation and
  * then runs it.
  */
-function main() {
+export function main() {
   var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
   ui.init(input => processInput(state, input));
 }
-
-window.onload = () => main();
