@@ -13,7 +13,7 @@ X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.";
 
   let x = parseInt(args[0], 10);
   let y = parseInt(args[1], 10);
-  let direction = args[2].toLowerCase();
+  let direction = args[2].trim().toLowerCase();
 
   if (isNaN(x) || x > state.xMax) {
     return `X position must be a number between 0 and ${state.xMax}`;
