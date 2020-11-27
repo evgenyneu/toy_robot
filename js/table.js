@@ -16,18 +16,21 @@ export function draw(state) {
     // Robot: exists
     // Show it on the board
 
-    // Number of cells before robot
+    // Number of cells before and after robot
     let cellsAfter = state.y * (state.xMax + 1) + state.xMax - state.x;
     let cellsBefore = totalCells - cellsAfter - 1;
 
     tableElement.innerHTML = '';
 
+    // Show empty cells before robot
     tableElement.innerHTML = cellHtml.repeat(cellsBefore);
 
+    // Cell with the robot
     tableElement.innerHTML += `<div class='ToyRobot-tableCell'>
   <img class='ToyRobot-robot' src='/images/robot.svg' />
   </div>`;
 
+    // Empty cells after robot
     tableElement.innerHTML += cellHtml.repeat(cellsAfter);
   }
 }

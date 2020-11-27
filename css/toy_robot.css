@@ -101,14 +101,14 @@ body {
 :root {
   --rowNum: 5;
   --colNum: 5;
-  --: calc((min(100vw, 600px) - 30px - (var(--colNum) - 1) * 5px) / var(--colNum));
+  --gridHeight: calc((min(100vw, 600px) - 30px - (var(--colNum) - 1) * 5px) / var(--colNum));
 }
 
 
 .ToyRobot-table {
   display: grid;
-  grid-template-rows: repeat(var(--rowNum), var(--));
-  grid-template-columns: repeat(var(--colNum), auto);
+  grid-template-rows: repeat(var(--rowNum), var(--gridHeight));
+  grid-template-columns: repeat(var(--colNum), var(--gridHeight));
   gap: 5px;
 }
 
@@ -122,5 +122,5 @@ body {
   width: 100%;
   height: 100%;
   padding: 10px;
-  /* transform: rotate(90deg); */
+  transform: rotate(90deg);
 }
