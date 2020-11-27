@@ -34,7 +34,7 @@ export function draw(state) {
 
     // Cell with the robot
     tableElement.innerHTML += `<div class='ToyRobot-tableCell'>
-  <img class='ToyRobot-robot ${direction}' src='/images/robot.svg' />
+  <img class='ToyRobot-robot ${direction}' src='./images/robot.svg' />
   </div>`;
 
     // Empty cells after robot

@@ -9,7 +9,7 @@
  * @return {string}         Command output.
  */
 export function place(state, command) {
-  let errorMessage = "Incorrect PLACE command, should be PLACE \
+  let errorMessage = "Incorrect PLACE command, should be in PLACE \
 X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.";
 
   // Parse command arguments
