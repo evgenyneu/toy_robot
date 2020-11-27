@@ -25,12 +25,12 @@ describe('processCommand incorrect', () => {
 
   describe('place', () => {
     it('places', () => {
-      // var state = {};
-      // let result = processCommand(state, 'place 2,3,WEST');
-      // expect(result).to.equal(null);
-      // expect(state.x).to.equal(2);
-      // expect(state.y).to.equal(3);
-      // expect(state.direction).to.equal('west');
+      var state = {};
+      let result = processCommand(state, 'place 2,3,WEST');
+      expect(result).to.equal(null);
+      expect(state.x).to.equal(2);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('west');
     });
   });
 });
