@@ -9,7 +9,7 @@ import * as table from './table.js';
  * Process the input text supplied by user, update robot's position
  * and display output.
  *
- * @param  {object} state Simulation state object.
+ * @param  {object} state Simulation state.
  * @param  {string} input Input test containing commands to the robot
  */
 function processInput(state, input) {

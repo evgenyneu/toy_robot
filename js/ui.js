@@ -1,3 +1,4 @@
+// User interface of the simulation.
 
 /**
  * Init user interface of the simulation

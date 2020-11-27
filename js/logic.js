@@ -1,8 +1,19 @@
-// Contains the logic of the simulation
+// Logic of the simulation
 
+
+/**
+ * Runs the PLACE command which places the robot on the table.
+ *
+ * @param  {object} state   Simulation state.
+ * @param  {string} command Arguments of the place command (X,Y,DIRECTION)
+ * @return {string}         Command output.
+ */
 export function place(state, command) {
   let errorMessage = "Incorrect PLACE command, should be in PLACE \
 X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.";
+
+  // Parse command arguments
+  // -------
 
   if (!command) return errorMessage;
   let args = command.split(",");
@@ -28,6 +39,9 @@ X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.";
 NORTH or SOUTH`;
   }
 
+  // Set new robot's location and direction
+  // -----
+
   state.x = x;
   state.y = y;
   state.direction = direction;
@@ -35,6 +49,13 @@ NORTH or SOUTH`;
   return null;
 }
 
+
+/**
+ * Runs the MOVE command: moves the robot in the direction it faces.
+ *
+ * @param  {object} state   Simulation state.
+ * @return {string}         Command output.
+ */
 export function move(state) {
   if (state.x === null) {
     return "Can't move because robot has not been placed yet";
@@ -70,6 +91,12 @@ export function move(state) {
   return null;
 }
 
+/**
+ * Runs the LEFT command: robot turns 90 degrees counterclockwise.
+ *
+ * @param  {object} state   Simulation state.
+ * @return {string}         Command output.
+ */
 export function left(state) {
   if (!state.direction) {
     return "Can't turn because robot has not been placed yet";
@@ -96,6 +123,12 @@ export function left(state) {
   return null;
 }
 
+/**
+ * Runs the RIGHT command: robot turns 90 degrees clockwise.
+ *
+ * @param  {object} state   Simulation state.
+ * @return {string}         Command output.
+ */
 export function right(state) {
   if (!state.direction) {
     return "Can't turn because robot has not been placed yet";
@@ -122,6 +155,12 @@ export function right(state) {
   return null;
 }
 
+/**
+ * Runs the REPORT command: returns robot's position and direction.
+ *
+ * @param  {object} state   Simulation state.
+ * @return {string}         Command output.
+ */
 export function report(state) {
   if (state.x === null || state.y === null || !state.direction) {
     return "Robot has not been placed yet";
@@ -130,7 +169,16 @@ export function report(state) {
   return `${state.x},${state.y},${state.direction.toUpperCase()}`;
 }
 
+/**
+ * Runs a single command given its text.
+ *
+ * @param  {object} state   Simulation state.
+ * @param  {string} command Text of the command.
+ * @return {string}         Command output.
+ */
 export function processCommand(state, command) {
+  // Separate the command from its arguments
+  // (i.e. 'PLACE' from '0,0,north')
   let splittedCommand = command.trim().split(/ (.+)/);
   let commandName = splittedCommand[0].toLowerCase();
 
@@ -158,10 +206,22 @@ export function processCommand(state, command) {
   }
 }
 
+/**
+ * Runs multiple commands given their text.
+ *
+ * @param  {object} state   Simulation state.
+ * @param  {string} input   Text containing mulitple commands.
+ * @return {string}         Command output.
+ */
 export function processInput(state, input) {
-  // Extract individual lines from the multi-line text
+  // Extract individual commands from the multi-line text
   const commands = input.split(/\r?\n/);
+
+  // Process commands and collect output
   var output = commands.map(command => processCommand(state, command));
-  output = output.filter(x => x); // Remove empty output
+
+  // Remove empty output (some commands return no output)
+  output = output.filter(x => x);
+
   return output;
 }
