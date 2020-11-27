@@ -8,6 +8,6 @@ export function appendToLog(output) {
   let logElement = document.querySelector(".ToyRobot-log");
 
   output.forEach((text) => {
-    logElement.innerHTML += text + '<br>';
+    logElement.innerHTML = text + '<br>' + logElement.innerHTML;
   });
 }
