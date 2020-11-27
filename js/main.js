@@ -7,7 +7,7 @@ import * as table from './table.js';
 function processInput(state, input) {
   let output = logic.processInput(state, input);
   ui.appendToLog(output);
-  table.draw();
+  table.draw(state);
 }
 
 /**
@@ -17,4 +17,5 @@ function processInput(state, input) {
 export function main() {
   var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
   ui.init(input => processInput(state, input));
+  table.draw(state);
 }

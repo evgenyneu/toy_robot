@@ -8,6 +8,7 @@ describe('main', () => {
       <textarea class="ToyRobot-input" placeholder="Enter your commands here"></textarea>
       <button class="ToyRobot-submitButton">Submit</button>
       <div class="ToyRobot-log" />
+      <div class="ToyRobot-table" />
     `;
   });
 

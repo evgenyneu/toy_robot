@@ -63,7 +63,7 @@ body {
 }
 
 /*
-  Elements
+  Simulation elements
   ---------
 */
 
@@ -91,4 +91,29 @@ body {
   border: 1px solid #bbb;
   overflow: auto;
   padding: 5px;
+}
+
+/*
+  Table
+  ---------
+*/
+
+:root {
+  --rowNum: 5;
+  --colNum: 5;
+  --gridHeight: calc((min(100vw, 600px) - 30px - (var(--colNum) - 1) * 5px) / var(--colNum));
+}
+
+
+.ToyRobot-table {
+  display: grid;
+  grid-template-rows: repeat(var(--rowNum), var(--gridHeight));
+  grid-template-columns: repeat(var(--colNum), auto);
+  gap: 5px;
+}
+
+.ToyRobot-tableCell {
+  grid-column-start: auto;
+  grid-row-start: auto;
+  background-color: Red;
 }
