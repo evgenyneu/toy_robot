@@ -131,7 +131,7 @@ export function report(state) {
 }
 
 export function processCommand(state, command) {
-  let splittedCommand = command.split(/ (.+)/);
+  let splittedCommand = command.trim().split(/ (.+)/);
   let commandName = splittedCommand[0].toLowerCase();
 
   switch(commandName) {

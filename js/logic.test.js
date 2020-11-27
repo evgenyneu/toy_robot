@@ -72,6 +72,15 @@ describe('processCommand incorrect', () => {
       expect(state.y).to.equal(3);
       expect(state.direction).to.equal('west');
     });
+
+    it('command with spaces', () => {
+      var state = {x: 2, y: 3, direction: 'west', xMax: 4, yMax: 6};
+      let result = processCommand(state, '   REPORT   ');
+      expect(result).to.equal('2,3,WEST');
+      expect(state.x).to.equal(2);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('west');
+    });
   });
 });
 
