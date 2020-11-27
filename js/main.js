@@ -6,11 +6,11 @@ import * as table from './table.js';
 
 
 /**
- * processInput - description
+ * Process the input text supplied by user, update robot's position
+ * and display output.
  *
- * @param  {type} state description
- * @param  {type} input description
- * @return {type}       description
+ * @param  {object} state Simulation state object.
+ * @param  {string} input Input test containing commands to the robot
  */
 function processInput(state, input) {
   let output = logic.processInput(state, input);
@@ -21,8 +21,8 @@ function processInput(state, input) {
 /**
  * The entry function of the simulation. Initialises the simulation and
  * then runs it.
- * @param  {rows} number Number of rows on the table grid.
- * @param  {columns} number Number of columns on the table grid.
+ * @param  {number} rows Number of rows on the table grid.
+ * @param  {number} columns Number of columns on the table grid.
  */
 export function main(rows, columns) {
   // State object that saves position of the robot and other settings
