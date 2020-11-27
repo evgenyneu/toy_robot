@@ -2,7 +2,7 @@
 
 export function place(state, command) {
   let errorMessage = "Incorrect PLACE command, should be in PLACE \
-X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.";
+X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.";
 
   if (!command) return errorMessage;
   let args = command.split(",");
@@ -21,6 +21,11 @@ X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.";
 
   if (isNaN(y) || y > state.yMax) {
     return `Y position must be a number between 0 and ${state.yMax}`;
+  }
+
+  if (!["north", 'south', 'east', 'west'].includes(direction)) {
+    return `Incorrect direction '${direction}', must be EAST, WEST, \
+NORTH or SOUTH`;
   }
 
   state.x = x;

@@ -51,7 +51,7 @@ describe('place', () => {
       var state = {};
       let result = place(state, 'error');
       expect(result).to.equal("Incorrect PLACE command, should be in PLACE \
-X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.");
+X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
 
       expect(state).to.eql({});
     });
@@ -60,7 +60,7 @@ X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.");
       var state = {};
       let result = place(state, undefined);
       expect(result).to.equal("Incorrect PLACE command, should be in PLACE \
-X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.");
+X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
 
       expect(state).to.eql({});
     });
@@ -90,6 +90,14 @@ X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.");
       var state = {xMax: 4, yMax: 6};
       let result = place(state, '3,9,WEST');
       expect(result).to.equal("Y position must be a number between 0 and 6");
+      expect(state).to.eql({xMax: 4, yMax: 6});
+    });
+
+    it('incorrect direction', () => {
+      var state = {xMax: 4, yMax: 6};
+      let result = place(state, '3,2,error');
+      expect(result).to.equal("Incorrect direction 'error', must be EAST, WEST, \
+NORTH or SOUTH");
       expect(state).to.eql({xMax: 4, yMax: 6});
     });
   });
