@@ -25,7 +25,7 @@ LEFT
 MOVE
 REPORT`;
 
-    main();
+    main(5, 5);
 
     let submitButton = document.querySelector(".ToyRobot-submitButton");
     submitButton.onclick.call(submitButton);
