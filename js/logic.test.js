@@ -151,7 +151,7 @@ describe('place', () => {
     it('single word', () => {
       var state = {};
       let result = place(state, 'error');
-      expect(result).to.equal("Incorrect PLACE command, should be in PLACE \
+      expect(result).to.equal("Incorrect PLACE command, should be PLACE \
 X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
 
       expect(state).to.eql({});
@@ -160,7 +160,7 @@ X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
     it('undefined', () => {
       var state = {};
       let result = place(state, undefined);
-      expect(result).to.equal("Incorrect PLACE command, should be in PLACE \
+      expect(result).to.equal("Incorrect PLACE command, should be PLACE \
 X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
 
       expect(state).to.eql({});
