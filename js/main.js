@@ -13,7 +13,7 @@ function processInput(state, input) {
  * then runs it.
  */
 function main() {
-  var state = {x: null, y: null, direction: null};
+  var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
   ui.init(input => processInput(state, input));
 }
 

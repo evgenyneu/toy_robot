@@ -1,12 +1,42 @@
 // Contains the logic of the simulation
 
+export function place(state, command) {
+  let errorMessage = "Incorrect PLACE command, should be in PLACE \
+X,Y,F format, where F is EAST, WAST, NORTH or SOUTH.";
+
+  if (!command) return errorMessage;
+  let args = command.split(",");
+
+  if (args.length != 3) {
+    return errorMessage;
+  }
+
+  let x = parseInt(args[0], 10);
+  let y = parseInt(args[1], 10);
+  let direction = args[2].toLowerCase();
+
+  if (isNaN(x) || x > state.xMax) {
+    return `X position must be a number between 0 and ${state.xMax}`;
+  }
+
+  if (isNaN(y) || y > state.yMax) {
+    return `Y position must be a number between 0 and ${state.yMax}`;
+  }
+
+  state.x = x;
+  state.y = y;
+  state.direction = direction;
+
+  return null;
+}
+
 export function processCommand(state, command) {
-  let splittedCommand = command.split(' ');
+  let splittedCommand = command.split(/ (.+)/);
   let commandName = splittedCommand[0].toLowerCase();
 
   switch(commandName) {
     case 'place':
-      return `place`;
+      return place(state, splittedCommand[1]);
 
     case 'move':
       return `move`;
