@@ -187,4 +187,13 @@ describe('move', () => {
     expect(state.y).to.equal(0);
     expect(state.direction).to.equal('south');
   });
+
+  it('has not been placed south edge', () => {
+    var state = {x: null, y: null, direction: null, xMax: 4, yMax: 6};
+    let result = move(state);
+    expect(result).to.equal("Can't move because robot has not been placed yet");
+    expect(state.x).to.equal(null);
+    expect(state.y).to.equal(null);
+    expect(state.direction).to.equal(null);
+  });
 });

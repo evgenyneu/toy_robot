@@ -36,6 +36,10 @@ NORTH or SOUTH`;
 }
 
 export function move(state) {
+  if (state.x === null) {
+    return "Can't move because robot has not been placed yet";
+  }
+
   var stateCopy = Object.assign({}, state);
 
   switch(state.direction) {
