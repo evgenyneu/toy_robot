@@ -1,5 +1,10 @@
 // Show the table with the robot
 
+/**
+ * Draw the table with the robot on screen.
+ *
+ * @param  {object} state   Simulation state.
+ */
 export function draw(state) {
   // Set the CSS variables for the number of rows and columns
   document.documentElement.style.setProperty("--colNum", state.xMax + 1);
