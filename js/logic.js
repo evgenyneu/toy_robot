@@ -122,6 +122,13 @@ export function right(state) {
   return null;
 }
 
+export function report(state) {
+  if (state.x === null || state.y === null || !state.direction) {
+    return "Robot has not been placed yet";
+  }
+
+  return `${state.x},${state.y},${state.direction.toUpperCase()}`;
+}
 
 export function processCommand(state, command) {
   let splittedCommand = command.split(/ (.+)/);
@@ -132,15 +139,15 @@ export function processCommand(state, command) {
       return place(state, splittedCommand[1]);
 
     case 'move':
-      return `move`;
+      return move(state);
 
     case 'left':
-      return `left`;
+      return left(state);
     case 'right':
-      return `right`;
+      return right(state);
 
     case 'report':
-      return `report`;
+      return report(state);
 
     default:
       if (!commandName) {

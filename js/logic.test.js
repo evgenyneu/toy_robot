@@ -3,7 +3,8 @@ import {
   place,
   move,
   left,
-  right
+  right,
+  report
 } from './logic.js';
 
 var expect = chai.expect;
@@ -26,11 +27,47 @@ describe('processCommand incorrect', () => {
     });
   });
 
-  describe('place', () => {
-    it('places', () => {
+  describe('correct', () => {
+    it('place', () => {
       var state = {};
-      let result = processCommand(state, 'place 2,3,WEST');
+      let result = processCommand(state, 'PLACE 2,3,NORTH');
       expect(result).to.equal(null);
+      expect(state.x).to.equal(2);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('north');
+    });
+
+    it('move', () => {
+      var state = {x: 2, y: 3, direction: 'west', xMax: 4, yMax: 6};
+      let result = processCommand(state, 'MOVE');
+      expect(result).to.equal(null);
+      expect(state.x).to.equal(1);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('west');
+    });
+
+    it('left', () => {
+      var state = {x: 2, y: 3, direction: 'west', xMax: 4, yMax: 6};
+      let result = processCommand(state, 'LEFT');
+      expect(result).to.equal(null);
+      expect(state.x).to.equal(2);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('south');
+    });
+
+    it('right', () => {
+      var state = {x: 2, y: 3, direction: 'west', xMax: 4, yMax: 6};
+      let result = processCommand(state, 'RIGHT');
+      expect(result).to.equal(null);
+      expect(state.x).to.equal(2);
+      expect(state.y).to.equal(3);
+      expect(state.direction).to.equal('north');
+    });
+
+    it('report', () => {
+      var state = {x: 2, y: 3, direction: 'west', xMax: 4, yMax: 6};
+      let result = processCommand(state, 'REPORT');
+      expect(result).to.equal('2,3,WEST');
       expect(state.x).to.equal(2);
       expect(state.y).to.equal(3);
       expect(state.direction).to.equal('west');
@@ -293,5 +330,19 @@ describe('right', () => {
     expect(state.x).to.equal(null);
     expect(state.y).to.equal(null);
     expect(state.direction).to.equal(null);
+  });
+});
+
+describe('report', () => {
+  it('reports', () => {
+    var state = {x: 1, y: 3, direction: 'north'};
+    let result = report(state);
+    expect(result).to.equal("1,3,NORTH");
+  });
+
+  it('has not been placed', () => {
+    var state = {x: null, y: null, direction: null};
+    let result = report(state);
+    expect(result).to.equal("Robot has not been placed yet");
   });
 });
