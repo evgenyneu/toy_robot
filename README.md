@@ -1,6 +1,8 @@
 # Toy Robot
 
-This is a simulation of a toy robot moving on square tabletop.
+This is a simulation of a toy robot moving on square tabletop:
+
+https://evgenii.com/files/2020/11/toy_robot/
 
 
 ## Run the simulation locally
