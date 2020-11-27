@@ -10,10 +10,15 @@
   <body>
     <script nomodule>
       // Message shown to older web browsers
-      document.write('<div class="OldBrowser">Please use a newer Web browser.</div>');
+      document.write('<div class="ToyRobot-OldBrowser">Please use a newer Web browser.</div>');
     </script>
 
-    <p>Hello World</p>
+    <div class="ToyRobot-layoutFixed ToyRobot-layoutPadding">
+      <h1>Toy Robot Simulation</h1>
+
+      <textarea class="ToyRobot-input" placeholder="Enter your commands here"></textarea>
+      <button class="ToyRobot-submitButton">Submit</button>
+    </div>
 
     <script type="module" src="/js/main.js"></script>
   </body>
