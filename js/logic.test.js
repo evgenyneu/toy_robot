@@ -194,6 +194,20 @@ X,Y,F format, where F is EAST, WEST, NORTH or SOUTH.");
       expect(state).to.eql({xMax: 4, yMax: 6});
     });
 
+    it('x is negative', () => {
+      var state = {xMax: 4, yMax: 6};
+      let result = place(state, '-1,2,WEST');
+      expect(result).to.equal("X position must be a number between 0 and 4");
+      expect(state).to.eql({xMax: 4, yMax: 6});
+    });
+
+    it('y is negative', () => {
+      var state = {xMax: 4, yMax: 6};
+      let result = place(state, '3,-1,WEST');
+      expect(result).to.equal("Y position must be a number between 0 and 6");
+      expect(state).to.eql({xMax: 4, yMax: 6});
+    });
+
     it('incorrect direction', () => {
       var state = {xMax: 4, yMax: 6};
       let result = place(state, '3,2,error');

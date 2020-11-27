@@ -21,6 +21,6 @@ describe('appendToLog', () => {
     appendToLog(['one', 'two']);
 
     let logElement = document.querySelector(".ToyRobot-log");
-    expect(logElement.innerHTML).to.include("one<br>two<br>");
+    expect(logElement.innerHTML).to.include("two<br>one<br>");
   });
 });
