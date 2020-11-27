@@ -1,7 +1,9 @@
 import {
   processCommand,
   place,
-  move
+  move,
+  left,
+  right
 } from './logic.js';
 
 var expect = chai.expect;
@@ -188,10 +190,106 @@ describe('move', () => {
     expect(state.direction).to.equal('south');
   });
 
-  it('has not been placed south edge', () => {
+  it('has not been placed', () => {
     var state = {x: null, y: null, direction: null, xMax: 4, yMax: 6};
     let result = move(state);
     expect(result).to.equal("Can't move because robot has not been placed yet");
+    expect(state.x).to.equal(null);
+    expect(state.y).to.equal(null);
+    expect(state.direction).to.equal(null);
+  });
+});
+
+
+describe('left', () => {
+  it('from north', () => {
+    var state = {x: 1, y: 3, direction: 'north', xMax: 4, yMax: 6};
+    let result = left(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('west');
+  });
+
+  it('from west', () => {
+    var state = {x: 1, y: 3, direction: 'west', xMax: 4, yMax: 6};
+    let result = left(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('south');
+  });
+
+  it('from south', () => {
+    var state = {x: 1, y: 3, direction: 'south', xMax: 4, yMax: 6};
+    let result = left(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('east');
+  });
+
+  it('from east', () => {
+    var state = {x: 1, y: 3, direction: 'east', xMax: 4, yMax: 6};
+    let result = left(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('north');
+  });
+
+  it('has not been placed', () => {
+    var state = {x: null, y: null, direction: null, xMax: 4, yMax: 6};
+    let result = left(state);
+    expect(result).to.equal("Can't turn because robot has not been placed yet");
+    expect(state.x).to.equal(null);
+    expect(state.y).to.equal(null);
+    expect(state.direction).to.equal(null);
+  });
+});
+
+
+describe('right', () => {
+  it('from north', () => {
+    var state = {x: 1, y: 3, direction: 'north', xMax: 4, yMax: 6};
+    let result = right(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('east');
+  });
+
+  it('from west', () => {
+    var state = {x: 1, y: 3, direction: 'west', xMax: 4, yMax: 6};
+    let result = right(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('north');
+  });
+
+  it('from south', () => {
+    var state = {x: 1, y: 3, direction: 'south', xMax: 4, yMax: 6};
+    let result = right(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('west');
+  });
+
+  it('from east', () => {
+    var state = {x: 1, y: 3, direction: 'east', xMax: 4, yMax: 6};
+    let result = right(state);
+    expect(result).to.equal(null);
+    expect(state.x).to.equal(1);
+    expect(state.y).to.equal(3);
+    expect(state.direction).to.equal('south');
+  });
+
+  it('has not been placed', () => {
+    var state = {x: null, y: null, direction: null, xMax: 4, yMax: 6};
+    let result = right(state);
+    expect(result).to.equal("Can't turn because robot has not been placed yet");
     expect(state.x).to.equal(null);
     expect(state.y).to.equal(null);
     expect(state.direction).to.equal(null);

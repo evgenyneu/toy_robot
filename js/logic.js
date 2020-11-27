@@ -70,6 +70,59 @@ export function move(state) {
   return null;
 }
 
+export function left(state) {
+  if (!state.direction) {
+    return "Can't turn because robot has not been placed yet";
+  }
+
+  switch(state.direction) {
+    case 'north':
+      state.direction = 'west';
+      break;
+
+    case 'south':
+      state.direction = 'east';
+      break;
+
+    case 'east':
+      state.direction = 'north';
+      break;
+
+    case 'west':
+      state.direction = 'south';
+      break;
+  }
+
+  return null;
+}
+
+export function right(state) {
+  if (!state.direction) {
+    return "Can't turn because robot has not been placed yet";
+  }
+
+  switch(state.direction) {
+    case 'north':
+      state.direction = 'east';
+      break;
+
+    case 'south':
+      state.direction = 'west';
+      break;
+
+    case 'east':
+      state.direction = 'south';
+      break;
+
+    case 'west':
+      state.direction = 'north';
+      break;
+  }
+
+  return null;
+}
+
+
 export function processCommand(state, command) {
   let splittedCommand = command.split(/ (.+)/);
   let commandName = splittedCommand[0].toLowerCase();
