@@ -1,4 +1,5 @@
 import {
+  processInput,
   processCommand,
   place,
   move,
@@ -8,6 +9,46 @@ import {
 } from './logic.js';
 
 var expect = chai.expect;
+
+describe('processInput', () => {
+  describe('correct', () => {
+    it('test 1', () => {
+      var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
+
+      let result = processInput(state, 'PLACE 0,0,NORTH\n\
+MOVE\n\
+REPORT');
+
+      expect(result.length).to.equal(1);
+      expect(result[0]).to.equal("0,1,NORTH");
+    });
+
+    it('test 2', () => {
+      var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
+
+      let result = processInput(state, 'PLACE 0,0,NORTH\n\
+LEFT\n\
+REPORT');
+
+      expect(result.length).to.equal(1);
+      expect(result[0]).to.equal("0,0,WEST");
+    });
+
+    it('test 3', () => {
+      var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
+
+      let result = processInput(state, 'PLACE 1,2,EAST\n\
+MOVE\n\
+MOVE\n\
+LEFT\n\
+MOVE\n\
+REPORT');
+
+      expect(result.length).to.equal(1);
+      expect(result[0]).to.equal("3,3,NORTH");
+    });
+  });
+});
 
 describe('processCommand incorrect', () => {
   describe('incorrect command', () => {

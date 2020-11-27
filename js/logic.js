@@ -162,5 +162,6 @@ export function processInput(state, input) {
   // Extract individual lines from the multi-line text
   const commands = input.split(/\r?\n/);
   var output = commands.map(command => processCommand(state, command));
+  output = output.filter(x => x); // Remove empty output
   return output;
 }
