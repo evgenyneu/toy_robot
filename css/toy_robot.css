@@ -101,7 +101,7 @@ body {
 :root {
   --rowNum: 5;
   --colNum: 5;
-  --gridHeight: calc((min(100vw, 300px) - (var(--colNum) - 1) * 5px) / var(--colNum));
+  --gridHeight: calc((min(100vw - 30px, 300px) - (var(--colNum) - 1) * 5px) / var(--colNum));
 }
 
 
