@@ -15,9 +15,9 @@ describe('processInput', () => {
     it('test 1', () => {
       var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
 
-      let result = processInput(state, 'PLACE 0,0,NORTH\n\
-MOVE\n\
-REPORT');
+      let result = processInput(state, `PLACE 0,0,NORTH
+MOVE
+REPORT`);
 
       expect(result.length).to.equal(1);
       expect(result[0]).to.equal("0,1,NORTH");
@@ -26,9 +26,9 @@ REPORT');
     it('test 2', () => {
       var state = {x: null, y: null, direction: null, xMax: 4, yMax: 4};
 
-      let result = processInput(state, 'PLACE 0,0,NORTH\n\
-LEFT\n\
-REPORT');
+      let result = processInput(state, `PLACE 0,0,NORTH
+LEFT
+REPORT`);
 
       expect(result.length).to.equal(1);
       expect(result[0]).to.equal("0,0,WEST");
