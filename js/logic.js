@@ -35,6 +35,37 @@ NORTH or SOUTH`;
   return null;
 }
 
+export function move(state) {
+  var stateCopy = Object.assign({}, state);
+
+  switch(state.direction) {
+    case 'north':
+      stateCopy.y += 1;
+      break;
+
+    case 'south':
+      stateCopy.y -= 1;
+      break;
+
+    case 'east':
+      stateCopy.x += 1;
+      break;
+
+    case 'west':
+      stateCopy.x -= 1;
+      break;
+  }
+
+  if (stateCopy.x < 0 || stateCopy.y < 0 ||
+      stateCopy.x > state.xMax || stateCopy.y > state.yMax) {
+    return "Reached the edge, can't move further";
+  }
+
+  Object.assign(state, stateCopy);
+
+  return null;
+}
+
 export function processCommand(state, command) {
   let splittedCommand = command.split(/ (.+)/);
   let commandName = splittedCommand[0].toLowerCase();
