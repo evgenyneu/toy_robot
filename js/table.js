@@ -5,9 +5,29 @@ export function draw(state) {
   document.documentElement.style.setProperty("--colNum", state.xMax + 1);
   document.documentElement.style.setProperty("--rowNum", state.yMax + 1);
 
-  // Add table cells
-  let cellHtml = "<div class='ToyRobot-tableCell'></div>";
   let tableElement = document.querySelector(".ToyRobot-table");
   let totalCells = (state.xMax + 1) * (state.yMax + 1);
-  tableElement.innerHTML = cellHtml.repeat(totalCells);
+  let cellHtml = "<div class='ToyRobot-tableCell'></div>";
+
+  if (state.x === null) {
+    // No robot -> show empty table
+    tableElement.innerHTML = cellHtml.repeat(totalCells);
+  } else {
+    // Robot: exists
+    // Show it on the board
+
+    // Number of cells before robot
+    let cellsAfter = state.y * (state.xMax + 1) + state.xMax - state.x;
+    let cellsBefore = totalCells - cellsAfter - 1;
+
+    tableElement.innerHTML = '';
+
+    tableElement.innerHTML = cellHtml.repeat(cellsBefore);
+
+    tableElement.innerHTML += `<div class='ToyRobot-tableCell'>
+  <img class='ToyRobot-robot' src='/images/robot.svg' />
+  </div>`;
+
+    tableElement.innerHTML += cellHtml.repeat(cellsAfter);
+  }
 }

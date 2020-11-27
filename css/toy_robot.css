@@ -75,10 +75,10 @@ body {
 }
 
 .ToyRobot-submitButton {
-  background-color: #4CAF50;
+  background-color: #CBFF58;
   display: inline-block;
-  border: none;
-  color: white;
+  border: 1px solid #999;
+  color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -101,13 +101,13 @@ body {
 :root {
   --rowNum: 5;
   --colNum: 5;
-  --gridHeight: calc((min(100vw, 600px) - 30px - (var(--colNum) - 1) * 5px) / var(--colNum));
+  --: calc((min(100vw, 600px) - 30px - (var(--colNum) - 1) * 5px) / var(--colNum));
 }
 
 
 .ToyRobot-table {
   display: grid;
-  grid-template-rows: repeat(var(--rowNum), var(--gridHeight));
+  grid-template-rows: repeat(var(--rowNum), var(--));
   grid-template-columns: repeat(var(--colNum), auto);
   gap: 5px;
 }
@@ -115,5 +115,12 @@ body {
 .ToyRobot-tableCell {
   grid-column-start: auto;
   grid-row-start: auto;
-  background-color: Red;
+  background-color: #49c;
+}
+
+.ToyRobot-robot {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  /* transform: rotate(90deg); */
 }
