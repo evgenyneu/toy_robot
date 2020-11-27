@@ -6,5 +6,8 @@ export function init(onClick) {
 
 export function appendToLog(output) {
   let logElement = document.querySelector(".ToyRobot-log");
-  logElement.innerHTML = output + '<br>' + logElement.innerHTML;
+
+  output.forEach((text) => {
+    logElement.innerHTML += text + '<br>';
+  });
 }

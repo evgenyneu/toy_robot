@@ -1,10 +1,10 @@
 // The entry point of the program that runs the simulation.
 
 import * as ui from './ui.js';
-import * as robot from './robot.js';
+import * as logic from './logic.js';
 
-function processInput(input) {
-  let output = robot.processInput(input);
+function processInput(state, input) {
+  let output = logic.processInput(state, input);
   ui.appendToLog(output);
 }
 
@@ -13,7 +13,8 @@ function processInput(input) {
  * then runs it.
  */
 function main() {
-  ui.init(processInput);
+  var state = {x: null, y: null, direction: null};
+  ui.init(input => processInput(state, input));
 }
 
 window.onload = () => main();
