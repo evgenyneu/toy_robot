@@ -2,10 +2,12 @@
 
 import * as ui from './ui.js';
 import * as logic from './logic.js';
+import * as table from './table.js';
 
 function processInput(state, input) {
   let output = logic.processInput(state, input);
   ui.appendToLog(output);
+  table.draw();
 }
 
 /**
